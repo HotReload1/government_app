@@ -2,10 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:government_project/core/configuration/styles.dart';
 import 'package:government_project/core/routing/route_path.dart';
-
-import 'package:provider/provider.dart';
-
-import '../../../core/app/state/app_state.dart';
 import '../../../core/configuration/assets.dart';
 import '../../../core/utils/size_config.dart';
 

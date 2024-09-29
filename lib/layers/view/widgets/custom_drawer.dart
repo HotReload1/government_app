@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../../../core/configuration/styles.dart';
 import '../../../core/routing/route_path.dart';
 
@@ -47,6 +48,49 @@ class _CustomDrawerState extends State<CustomDrawer> {
           function: () => Navigator.of(context)
               .pushReplacementNamed(RoutePaths.ReportScreen)),
     ];
+  }
+
+  showAlertDialog(Function function) {
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text(
+        "نعم",
+        style: TextStyle(color: Colors.green),
+      ),
+      onPressed: () {
+        function();
+      },
+    );
+
+    Widget cancelButton = TextButton(
+      child: Text(
+        "إلغاء",
+        style: TextStyle(color: Colors.red),
+      ),
+      onPressed: () {
+        CustomDrawer.selectedTab = CustomDrawer.previousTab;
+        setState(() {});
+        Navigator.of(context).pop();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      backgroundColor: Colors.black,
+      content: const Text("هل أنت متأكد أنك تريد تسجيل الخروج!"),
+      actions: [
+        cancelButton,
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 
   _buildDrawerOption(DrawerOption drawerOption, int index) {
@@ -143,6 +187,15 @@ class _CustomDrawerState extends State<CustomDrawer> {
                             _buildDrawerOption(getOptions()[index], index)),
                   ),
                 ),
+                _buildDrawerOption(
+                    DrawerOption(
+                      icon: Icons.logout,
+                      title: "تسجيل الخروج",
+                      function: () {
+                        showAlertDialog(() => SystemNavigator.pop());
+                      },
+                    ),
+                    getOptions().length),
               ],
             ),
           )
