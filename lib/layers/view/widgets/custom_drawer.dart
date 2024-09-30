@@ -18,6 +18,11 @@ class _CustomDrawerState extends State<CustomDrawer> {
   List<DrawerOption> getOptions() {
     return [
       DrawerOption(
+          icon: Icons.home,
+          title: "الرئيسية",
+          function: () =>
+              Navigator.of(context).pushReplacementNamed(RoutePaths.Home)),
+      DrawerOption(
           icon: Icons.newspaper,
           title: "الأخبار",
           function: () =>
@@ -76,7 +81,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
 
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       content: const Text("هل أنت متأكد أنك تريد تسجيل الخروج!"),
       actions: [
         cancelButton,

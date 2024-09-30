@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen>
     });
     Future.delayed(Duration(seconds: 3), () {
       Navigator.of(context)
-          .pushNamedAndRemoveUntil(RoutePaths.News, (_) => false);
+          .pushNamedAndRemoveUntil(RoutePaths.Home, (_) => false);
     });
   }
 

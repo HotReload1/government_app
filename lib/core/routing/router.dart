@@ -4,6 +4,7 @@ import 'package:government_project/core/routing/route_path.dart';
 import 'package:government_project/layers/view/about/about.dart';
 import 'package:government_project/layers/view/decisions/decision_screen.dart';
 import 'package:government_project/layers/view/events/events_screen.dart';
+import 'package:government_project/layers/view/home/home_screen.dart';
 import 'package:government_project/layers/view/intro/spalsh_screen.dart';
 import 'package:government_project/layers/view/report/report_screen.dart';
 import 'package:government_project/layers/view/services/services_screen.dart';
@@ -12,6 +13,8 @@ import '../../layers/view/news/news_screen.dart';
 class AppRouter {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case RoutePaths.Home:
+        return MaterialPageRoute(builder: (_) => HomeScreen());
       case RoutePaths.News:
         return MaterialPageRoute(builder: (_) => NewsScreen());
       case RoutePaths.DecisionScreen:
